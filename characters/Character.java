@@ -3,10 +3,18 @@ package characters;
 import equipment.*;
 
 public abstract class Character {
-    String name;
-    short price;
-    byte atk, def, hp, spd;
+    private String category, name;
+    private short price;
+    private byte atk, def, hp, spd;
 
-    Armor armor;
-    Artefact artefact;
+    private Armor armor;
+    private Artefact artefact;
+
+    public String getCategory() {
+        return category;
+    }
+    public String getName() {
+        return name;
+    }
+
 }
