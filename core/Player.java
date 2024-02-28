@@ -10,10 +10,12 @@ import equipment.Equipment;
 
 public class Player {
     private static HashSet<String> usernames = new HashSet<>();
-    private String name;
     private final String username;
+
+    private String name;
     private float coins;
-    private Map<String, Character> army;
+    private byte XP;
+    private Map<String, Character> army;  // Maybe Army can be its own object
     // private Map<Equipment, Integer> inventory;
 
     public Player () {
@@ -48,4 +50,12 @@ public class Player {
     public void buyCharacter(String category, String name) {
 
     }
+
+
+
+
+    public void getOpponent() {
+        
+    }
+
 }
