@@ -9,10 +9,11 @@ import gameutils.Utils;
 public class PlayerManager {
     private static PlayerManager instance;    // Singleton design pattern
     private HashMap<String, Player> playerList;
-    private ArrayList<String> usernameList;   // Maintained to efficiently find a random player for battle
+    private ArrayList<String> usernameList;   // Maintained to efficiently find a random player to battle
 
     private PlayerManager () {
         playerList = new HashMap<>();
+        usernameList = new ArrayList<>();
     }
     
     public static PlayerManager getInstance() {
@@ -24,23 +25,23 @@ public class PlayerManager {
         String username = Utils.readString("Enter Username: ");
 
         while (playerList.containsKey(username)) {   // Username has to be unique
-            username = Utils.readString("User ID Taken, Please Try Again: ");
+            username = Utils.readString("Username Taken, Please Try Again: ");
         }
 
         String name = Utils.readString("Enter Name: ");
 
+        return newPlayer(username, name);
+    }
+
+    public Player newPlayer(String username, String name) {      // Creates a player directly, intended to add NPCs
+        if (playerList.containsKey(username)) { 
+            System.out.println("Username already taken.");
+            return null;
+        }
         Player newPlayer = new Player(username, name);
         playerList.put(username, newPlayer);          // Adds the new player to the List
         usernameList.add(username);
-
         return newPlayer;
-    }
-
-    public Player getPlayer(String username) {
-        if (!playerList.containsKey(username)) {
-            System.out.println("Player does not Exist");
-        }
-        return playerList.get(username);
     }
 
     public Player getPlayer() {
@@ -49,6 +50,13 @@ public class PlayerManager {
             username = Utils.readString("Player does not Exist, Please Try Again: ");
         }
         return getPlayer(username);
+    }
+
+    public Player getPlayer(String username) {
+        if (!playerList.containsKey(username)) {
+            System.out.println("Player does not Exist");
+        }
+        return playerList.get(username);
     }
 
     public void deletePlayer(String username) {
@@ -60,6 +68,7 @@ public class PlayerManager {
         usernameList.remove(username);
         System.out.println("Player " + username + " successfully deleted.");
     }
+
 
     public void battleSomeone(Player player) {
 
@@ -86,7 +95,7 @@ public class PlayerManager {
         return;
     }
 
-    
+
     private Player getRandomOpponent(Player player) {
         String opponentUsername;
         do {

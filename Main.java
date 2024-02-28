@@ -7,8 +7,8 @@ public class Main {
 
         PlayerManager PM = PlayerManager.getInstance();
 
-        Player player1 = PM.newPlayer();
-
-        Archer Legolas = new Archer("Sunfire");
+        Player player1 = PM.newPlayer("whitewolf", "Geralt of Rivia");
+        Player player2 = PM.newPlayer("evilwizard", "Stregobor");
+        player1.battleSomeone();
     }
 }
