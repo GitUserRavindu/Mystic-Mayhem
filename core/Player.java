@@ -7,7 +7,7 @@ import java.util.Scanner;
 import characters.*;
 import characters.Character;
 import equipment.Equipment;
-import utils.Utils;
+import gameutils.Utils;
 
 public class Player {
     private final String username;
@@ -20,19 +20,29 @@ public class Player {
     protected Player (String username, String name) {
         this.username = username;
         this.name = name;
+        coins = 500;
         XP = 0;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getUsername() {
+        return username;
+    }
 
     public void printStats () {
 
     }
 
-    public void getOpponent () {
-
+    public void battleSomeone() {
+        PlayerManager.getInstance().battleSomeone(this);
     }
 
+    public void setHomeGround () {
 
+    }
 
 
 

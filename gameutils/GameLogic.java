@@ -1,4 +1,4 @@
-package utils;
+package gameutils;
 
 public class GameLogic {
     
