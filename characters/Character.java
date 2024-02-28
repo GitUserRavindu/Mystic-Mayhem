@@ -1,20 +1,13 @@
 package characters;
 
+import core.GameItem;
 import equipment.*;
 
-public abstract class Character {
-    
-    protected String name;
-    protected short price;
-    protected byte atk, def, hp, spd;
+public abstract class Character extends GameItem {
 
     protected Armor armor;
     protected Artefact artefact;
 
-    public String getName() {
-        return name;
-    }
-
-    abstract String getCategory();
+    public abstract String getCategory();
 
 }
