@@ -28,6 +28,8 @@ public abstract class GameItem {
     }
 
     // Setters
+
+    // These may not be needed
     
     protected void setPrice(short price) {
         this.price = price;
@@ -49,6 +51,28 @@ public abstract class GameItem {
         this.def = def;
         this.hp = hp;
         this.spd = spd;
+    }
+
+    protected void setPrice(double price) {
+        this.price = (short) price;
+    }
+    protected void setAttack(int atk) {
+        this.atk = (byte) atk;
+    }
+    protected void setDefense(int def) {
+        this.def = (byte) def;
+    }
+    protected void setHealth(int hp) {
+        this.hp = (byte) hp;
+    }
+    protected void setSpeed(int spd) {
+        this.spd = (byte) spd;
+    }
+    protected void setTraits(int atk, int def, int hp, int spd) {
+        this.atk = (byte) atk;
+        this.def = (byte) def;
+        this.hp = (byte) hp;
+        this.spd = (byte) spd;
     }
 
     // Modify Values

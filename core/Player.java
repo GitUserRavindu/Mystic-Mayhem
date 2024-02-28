@@ -1,26 +1,31 @@
 package core;
+
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Scanner;
+
 import characters.*;
 import characters.Character;
+import equipment.Equipment;
 
 public class Player {
     private static HashSet<String> usernames = new HashSet<>();
     private String name;
-    private String username;
+    private final String username;
     private float coins;
     private Map<String, Character> army;
+    // private Map<Equipment, Integer> inventory;
 
     public Player () {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Enter User ID: ");
-        username = scanner.nextLine();
-        while (usernames.contains(username)) {
+        String temp_username = scanner.nextLine();
+        while (usernames.contains(temp_username)) {
             System.out.println("User ID Taken, Please Try Again: ");
-            username = scanner.nextLine();
+            temp_username = scanner.nextLine();
         }     
+        username = temp_username;
         usernames.add(username);
 
         System.out.println("Enter Name: ");

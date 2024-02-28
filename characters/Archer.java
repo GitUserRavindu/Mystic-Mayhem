@@ -6,8 +6,8 @@ public class Archer extends Character {
         this.name = name;
         switch (name) {
             case "Shooter":
-                price = 80;
-                atk = 11; def = 4; hp = 6; spd = 9;
+                setPrice(80);
+                setTraits(11, 4, 6, 9);
                 break;
             case "Ranger":
                 price = 115;
