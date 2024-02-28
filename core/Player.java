@@ -11,7 +11,6 @@ import equipment.Equipment;
 public class Player {
     private static HashSet<String> usernames = new HashSet<>();
     private final String username;
-
     private String name;
     private float coins;
     private byte XP;
