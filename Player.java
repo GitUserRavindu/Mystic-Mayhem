@@ -1,11 +1,16 @@
 import java.util.HashSet;
 import java.util.Scanner;
+import characters.*;
 
 public class Player {
     private static HashSet<String> usernames = new HashSet<>();
     private String name;
     private String username;
     private float coins;
+
+    private Archer archer;
+
+    // or we could do private Map<String, Character> army;
 
     public Player () {
         Scanner scanner = new Scanner(System.in);
