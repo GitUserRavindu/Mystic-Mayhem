@@ -9,7 +9,6 @@ public class Player {
     private String name;
     private String username;
     private float coins;
-
     private Map<String, Character> army;
 
     public Player () {
@@ -32,7 +31,7 @@ public class Player {
 
     public boolean addCharacter(Character character) {
         if (army.containsKey(character.getCategory())) {
-            System.out.println("You already have an " + character.getCategory() + " in your Army");
+            System.out.println("You already have " + character.getCategory() + " " + character.getName() + " in your Army");
             return false; // Indicate failure
         } else {
             army.put(character.getCategory(), character);
