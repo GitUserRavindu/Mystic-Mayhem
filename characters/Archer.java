@@ -1,4 +1,5 @@
 package characters;
 
-public class Archer extends Character{
+public class Archer extends Character {
+    
 }
