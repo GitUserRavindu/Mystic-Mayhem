@@ -4,6 +4,9 @@ import core.GameItem;
 import equipment.*;
 
 public abstract class Character extends GameItem {
+
+    // See category classes (Archer, Healer, ...) for category-specific methods
+    // subcategories contain base names and stats for each type of character
     
     protected static short basePrice;   // Should be the same types as Game Item
     protected static float baseHp;

@@ -2,8 +2,9 @@ package core;
 
 public abstract class GameItem {
 
-    protected static String name;
+    // Shared by Characters and Equipment
 
+    protected static String name;
     protected short price;
     protected float hp;
     protected byte atk, def, spd;
@@ -13,7 +14,6 @@ public abstract class GameItem {
     public static String getName() {
         return name;
     }
-
     public short getPrice() {
         return price;
     }
