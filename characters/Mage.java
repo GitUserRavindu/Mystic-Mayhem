@@ -1,6 +1,6 @@
 package characters;
 
-public class Mage extends Character {
+public abstract class Mage extends Character {
 
     @Override
     public String getCategory () {

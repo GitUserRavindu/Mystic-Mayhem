@@ -4,9 +4,18 @@ import characters.Mythical;
 
 public class Mythical2 extends Mythical {
 
-    static {
-        setName("Shooter");
-        setBaseStats(80, 11, 4, 6, 9);
+    @Override
+    public String getName() {
+        return "Basilisk";
     }
-    
+
+    @Override
+    protected void initStats() {
+        price = 165;
+        atk = 15;
+        def = 11;
+        hp = 10;
+        spd = 12;
+    }
+
 }

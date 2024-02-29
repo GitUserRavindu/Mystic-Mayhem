@@ -38,6 +38,12 @@ public final class Utils {
         return input;
     }
 
+    public static void printStringsLineByLine(String[] arr) {
+        for (String str : arr) {
+            System.out.println(str);
+        }
+    }
+
     public static void waitSeconds(int secs) {
         try {
             Thread.sleep(secs*1000);

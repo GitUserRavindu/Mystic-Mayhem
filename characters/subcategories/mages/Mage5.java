@@ -4,9 +4,18 @@ import characters.Mage;
 
 public class Mage5 extends Mage {
 
-    static {
-        setName("Shooter");
-        setBaseStats(80, 11, 4, 6, 9);
+    @Override
+    public String getName() {
+        return "Eldritch";
     }
-    
+
+    @Override
+    protected void initStats() {
+        price = 270;
+        atk = 19;
+        def = 17;
+        hp = 18;
+        spd = 14;
+    }
+
 }

@@ -4,9 +4,18 @@ import characters.Knight;
 
 public class Knight5 extends Knight {
 
-    static {
-        setName("Shooter");
-        setBaseStats(80, 11, 4, 6, 9);
+    @Override
+    public String getName() {
+        return "Swiftblade";
     }
-    
+
+    @Override
+    protected void initStats() {
+        price = 250;
+        atk = 18;
+        def = 20;
+        hp = 17;
+        spd = 13;
+    }
+
 }

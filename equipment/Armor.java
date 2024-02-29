@@ -1,5 +1,10 @@
 package equipment;
 
-public class Armor extends Equipment{
-    
+public abstract class Armor extends Equipment{
+       
+    @Override
+    public String getCategory () {
+        return "Armor";
+    }
+ 
 }

@@ -6,33 +6,36 @@ import equipment.*;
 public abstract class Character extends GameItem {
 
     // See category classes (Archer, Healer, ...) for category-specific methods
-    // subcategories contain base names and stats for each type of character
-    
-    protected static short basePrice;   // Should be the same types as Game Item
-    protected static float baseHp;
-    protected static byte baseAtk, baseDef, baseSpd;
+    // subcategories contain name and base stats for each type of character, no changes outside of this has to be made there
 
     protected Armor armor;
     protected Artefact artefact;
 
-
-    protected Character() {
-        price = basePrice;
+    protected Character() {                 // This constructor is used for every sub-category
+        initStats();
     }
     
-    public abstract String getCategory();
-
+    public abstract String getCategory();   // Overriden for each category
 
     public void reset() {
-        
+        initStats();
+        addEquipStats(armor);
+        addEquipStats(artefact);
     }
 
-    protected static void setBaseStats(int price, int atk, int def, int hp, int spd) {   // USed in static initializer blocks for characters
-        basePrice = (short) price;
-        baseAtk = (byte) atk;
-        baseDef = (byte) def;
-        baseHp = (float) hp;
-        baseSpd = (byte) spd;
+    public void giveEquip(Equipment item) {
+
     }
 
+
+    private void addEquipStats(Equipment item) {
+        if (item==null) {
+            return;
+        }
+        price += item.getPrice()*0.2;
+        atk += item.getAttack();
+        def += item.getDefense();
+        hp += item.getHealth();
+        spd += item.getSpeed();
+    }
 }

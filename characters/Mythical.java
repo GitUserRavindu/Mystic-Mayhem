@@ -1,6 +1,6 @@
 package characters;
 
-public class Mythical extends Character{
+public abstract class Mythical extends Character{
 
     @Override
     public String getCategory () {

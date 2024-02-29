@@ -1,5 +1,10 @@
 package equipment;
 
-public class Artefact extends Equipment{
+public abstract class Artefact extends Equipment{
     
+    @Override
+    public String getCategory () {
+        return "Artefact";
+    }
+
 }

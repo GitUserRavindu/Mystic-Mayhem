@@ -4,9 +4,18 @@ import characters.Mage;
 
 public class Mage3 extends Mage {
 
-    static {
-        setName("Shooter");
-        setBaseStats(80, 11, 4, 6, 9);
+    @Override
+    public String getName() {
+        return "Enchanter";
     }
-    
+
+    @Override
+    protected void initStats() {
+        price = 160;
+        atk = 16;
+        def = 10;
+        hp = 13;
+        spd = 16;
+    }
+
 }

@@ -4,9 +4,18 @@ import characters.Archer;
 
 public class Archer5 extends Archer {
 
-    static {
-        setName("Shooter");
-        setBaseStats(80, 11, 4, 6, 9);
+    @Override
+    public String getName() {
+        return "Saggitarius";
     }
-    
+
+    @Override
+    protected void initStats() {
+        price = 230;
+        atk = 18;
+        def = 7;
+        hp = 12;
+        spd = 17;
+    }
+
 }

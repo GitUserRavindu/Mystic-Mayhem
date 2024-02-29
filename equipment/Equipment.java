@@ -2,6 +2,6 @@ package equipment;
 
 import core.GameItem;
 
-public class Equipment extends GameItem {
+public abstract class Equipment extends GameItem {
     
 }

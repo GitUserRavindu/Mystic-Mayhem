@@ -2,11 +2,11 @@ package characters;
 
 import characters.subcategories.*;
 
-public final class CharacterMaker {
+public final class CharacterMaker {    // Factory design pattern
 
     private CharacterMaker() {}  // Cannot be Instantiated
 
-    public static Character newCharacter(String category, String name) {    // Factory design pattern
+    public static Character newCharacter(String category, String name) {
         switch (category) {
             case Archer.getCategory():
                 return newArcher(name);

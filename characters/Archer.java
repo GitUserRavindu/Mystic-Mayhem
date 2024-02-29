@@ -6,4 +6,5 @@ public abstract class Archer extends Character {
     public String getCategory () {
         return "Archer";
     }
+    
 }

@@ -4,16 +4,19 @@ public abstract class GameItem {
 
     // Shared by Characters and Equipment
 
-    protected static String name;
     protected short price;
     protected float hp;
     protected byte atk, def, spd;
+    
+    protected GameItem() {       // This constructor is used for every sub-class
+        initStats();             // Sets values as defines by each sub-class
+    }
 
     // Getters
 
-    public static String getName() {
-        return name;
-    }
+    public abstract String getCategory();
+    public abstract String getName();
+
     public short getPrice() {
         return price;
     }
@@ -31,11 +34,9 @@ public abstract class GameItem {
     }
 
     // Setters
-
-    protected static void setName(String name) {   // This will be used within Subclasses to set their name
-        GameItem.name = name;
-    }
-
+    
+    protected abstract void initStats();
+    
     // These may not be needed
     
     protected void setPrice(short price) {
