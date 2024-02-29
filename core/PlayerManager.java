@@ -7,9 +7,9 @@ import java.util.Random;
 import gameutils.Utils;
 
 public class PlayerManager {
-    private static PlayerManager instance;    // Singleton design pattern
+    private static PlayerManager instance;        // Singleton design pattern
     private HashMap<String, Player> playerList;
-    private ArrayList<String> usernameList;   // Maintained to efficiently find a random player to battle
+    private ArrayList<String> usernameList;       // Maintained to efficiently find a random player to battle
 
     private PlayerManager () {
         playerList = new HashMap<>();

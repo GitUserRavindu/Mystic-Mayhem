@@ -1,9 +1,10 @@
 package characters;
 
-public abstract class Knight extends Character {
+public class Mythical extends Character{
 
     @Override
     public String getCategory () {
-        return "Knight";
+        return "Mythical Creature";
     }
+    
 }

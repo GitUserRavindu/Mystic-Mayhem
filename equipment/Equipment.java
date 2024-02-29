@@ -1,5 +1,7 @@
 package equipment;
 
-public class Equipment {
+import core.GameItem;
+
+public class Equipment extends GameItem {
     
 }

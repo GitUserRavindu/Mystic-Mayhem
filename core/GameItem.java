@@ -2,15 +2,18 @@ package core;
 
 public abstract class GameItem {
 
-    protected String name;
+    protected static String name;
+
     protected short price;
-    protected byte atk, def, hp, spd;
+    protected float hp;
+    protected byte atk, def, spd;
 
     // Getters
 
-    public String getName() {
+    public static String getName() {
         return name;
     }
+
     public short getPrice() {
         return price;
     }
@@ -20,7 +23,7 @@ public abstract class GameItem {
     public byte getDefense() {
         return def;
     }
-    public byte getHealth() {
+    public float getHealth() {
         return hp;
     }
     public byte getSpeed() {
@@ -28,6 +31,10 @@ public abstract class GameItem {
     }
 
     // Setters
+
+    protected static void setName(String name) {   // This will be used within Subclasses to set their name
+        GameItem.name = name;
+    }
 
     // These may not be needed
     

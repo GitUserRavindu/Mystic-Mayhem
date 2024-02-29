@@ -1,5 +1,5 @@
 package equipment;
 
-public class Armor {
+public class Armor extends Equipment{
     
 }

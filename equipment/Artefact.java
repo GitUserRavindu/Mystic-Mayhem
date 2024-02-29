@@ -1,5 +1,5 @@
 package equipment;
 
-public class Artefact {
+public class Artefact extends Equipment{
     
 }
