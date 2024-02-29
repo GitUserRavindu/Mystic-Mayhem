@@ -2,7 +2,9 @@ package gameutils;
 
 import java.util.Scanner;
 
-public class Utils {
+public final class Utils {
+
+    private Utils() {}  // Cannot be Instantiated
 
     static Scanner scanner = new Scanner (System.in);
     
@@ -18,6 +20,21 @@ public class Utils {
                 input = null;
             }
         } while (input == null);
+        return input;
+    }
+    
+    public static int readInt(String prompt) {
+        int input;
+        do{
+            System.out.println(prompt);
+            try{    
+                input = Integer.parseInt(scanner.next());
+            }
+            catch(Exception e) {
+                System.out.println("An unexpected error occured, please try again: ");
+                input = -1;
+            }
+        } while (input == -1);
         return input;
     }
 

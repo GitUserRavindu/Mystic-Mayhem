@@ -24,12 +24,17 @@ public class Player {
         XP = 0;
     }
 
+
+    // Getters
+
     public String getName() {
         return name;
     }
-
     public String getUsername() {
         return username;
+    }
+    public float getCoins() {
+        return coins;
     }
 
     public void printStats () {
