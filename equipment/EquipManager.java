@@ -11,8 +11,8 @@ public class EquipManager {
 
     static {                                                    // Flyweight design pattern
         armors.put(Chainmail.getName(), new Chainmail());       // Every character has the same armor / artefact objects
-        armors.put(Fleece.getName(), new Chainmail());
-        armors.put(Regalia.getName(), new Chainmail());
+        armors.put(Fleece.getName(), new Fleece());
+        armors.put(Regalia.getName(), new Regalia());
         artefacts.put(Amulet.getName(), new Amulet()); 
         artefacts.put(Crystal.getName(), new Crystal());
         artefacts.put(Excalibur.getName(), new Excalibur());

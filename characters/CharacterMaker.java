@@ -11,6 +11,7 @@ public final class CharacterMaker {    // Factory design pattern
             case Archer.getCategory():
                 return newArcher(name);
                 break;
+            /* 
             case Knight.getCategory():
                 return newKnight(name);
                 break;
@@ -23,6 +24,7 @@ public final class CharacterMaker {    // Factory design pattern
             case Mythical.getCategory():
                 return newMythical(name);
                 break;
+            */
             default:
                 throw new IllegalArgumentException("Unknown Character Type");
         }
@@ -30,7 +32,7 @@ public final class CharacterMaker {    // Factory design pattern
 
     public static Archer newArcher(String name) {
         switch (name) {
-            case Archer1.getName():
+            case Archer1.NAME:
                 return new Archer1();
                 break;
             case Archer2.getName():
@@ -49,7 +51,7 @@ public final class CharacterMaker {    // Factory design pattern
                 throw new IllegalArgumentException("Unknown Name")
         }
     }
-
+/*
     public static Knight newKnight(String name) {
         switch (name) {
             case Knight1.getName():
@@ -137,4 +139,5 @@ public final class CharacterMaker {    // Factory design pattern
                 throw new IllegalArgumentException("Unknown Name");
         }
     }
+*/
 }

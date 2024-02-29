@@ -11,12 +11,6 @@ public abstract class Character extends GameItem {
     protected Armor armor;
     protected Artefact artefact;
 
-    protected Character() {                 // This constructor is used for every sub-category
-        initStats();
-    }
-    
-    public abstract String getCategory();   // Overriden for each category
-
     public void reset() {
         initStats();
         addEquipStats(armor);
@@ -24,7 +18,17 @@ public abstract class Character extends GameItem {
     }
 
     public void giveEquip(Equipment item) {
-
+        switch (item.getCategory()) {
+            case "Armor":
+                this.armor = (Armor) item;
+                break;
+            case "Artefact":
+                this.artefact = (Artefact) item;
+                break;
+            default:
+                break;
+        }
+        this.addEquipStats(item);
     }
 
 
