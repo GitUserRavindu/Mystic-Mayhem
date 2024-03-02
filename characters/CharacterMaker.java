@@ -2,6 +2,7 @@ package characters;
 
 import characters.subcategories.archers.*;
 import characters.subcategories.knights.*;
+import characters.subcategories.healers.*;
 
 public final class CharacterMaker {    // Factory design pattern
 
@@ -13,6 +14,8 @@ public final class CharacterMaker {    // Factory design pattern
                 return newArcher(tier);
             case "Knight" :
                 return newKnight(tier);
+            case "Healer" :
+                return newHealer(tier);
             default:
                 throw new IllegalArgumentException("Invalid Category");
         }
@@ -50,6 +53,24 @@ public final class CharacterMaker {    // Factory design pattern
                 throw new IllegalArgumentException("Unknown Tier");
         }
     }
+    
+    public static Healer newHealer(int tier) {
+        switch (tier) {
+            case 1:
+                return new Healer1();
+            case 2:
+                return new Healer2();
+            case 3:
+                return new Healer3();
+            case 4:
+                return new Healer4();
+            case 5:
+                return new Healer5();
+            default:
+                throw new IllegalArgumentException("Unknown Tier");
+        }
+    }
+
     /*
 
     public static Mage newMage(String name) {
@@ -74,27 +95,6 @@ public final class CharacterMaker {    // Factory design pattern
         }
     }
 
-    public static Healer newHealer(String name) {
-        switch (name) {
-            case Healer1.getName():
-                return new Healer1();
-                break;
-            case Healer2.getName():
-                return new Healer2();
-                break;
-            case Healer3.getName():
-                return new Healer3();
-                break;
-            case Healer4.getName():
-                return new Healer4();
-                break;
-            case Healer5.getName():
-                return new Healer5();
-                break;
-            default:
-                throw new IllegalArgumentException("Unknown Name");
-        }
-    }
 
     public static Mythical newMythical(String name) {
         switch (name) {

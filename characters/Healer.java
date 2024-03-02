@@ -8,8 +8,15 @@ public abstract class Healer extends Character implements IHealer {
     public String getCategory () {
         return "Healer";
     }
+    
+    @Override
+    public void heal(Character target) {
+        double healing = 0.5*getAttack();
+        target.addHealth(-healing);
+    }
 
-    public void heal(Character character) {
-        System.out.println("Healed");
+    @Override
+    public void attack(Character character) {
+        throw new IllegalArgumentException("Healer cannot Attack");
     }
 }

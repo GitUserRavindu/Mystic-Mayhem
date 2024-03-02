@@ -1,5 +1,6 @@
 package core;
 
+import java.util.Collection;
 import java.util.HashMap;
 
 import characters.Character;
@@ -12,10 +13,7 @@ public class Army {
         armyCharacters = new HashMap<>();
     }
 
-    public void battleArmy(Army army) {
-
-
-    }
+    // Functionalities
 
     public boolean hasCharacter(String category) {
         if (armyCharacters.containsKey(category)) {
@@ -26,6 +24,12 @@ public class Army {
 
     public void addCharacter(Character character) {
         armyCharacters.put(character.getCategory(), character);
+    }
+
+    public void reset() {
+        for (Character character : armyCharacters.values()) {
+            character.reset();
+        }
     }
 
 
@@ -49,6 +53,10 @@ public class Army {
     }
 
     // Getters
+
+    public Collection<Character> getCharacters() {
+        return armyCharacters.values();
+    }
 
     public Character getCharacter(String category) {
         return armyCharacters.get(category);

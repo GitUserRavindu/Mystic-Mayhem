@@ -2,6 +2,7 @@ package core;
 
 import characters.Character;
 import characters.CharacterMaker;
+import core.HomeGrounds.HomeGround;
 
 public class Player {
     private final String username;
@@ -9,6 +10,7 @@ public class Player {
     private float gold;
     private byte XP;
     private Army army;
+    private HomeGround homeGround;
 
     protected Player (String username, String name) {
         this.username = username;
@@ -33,16 +35,19 @@ public class Player {
     public byte getXP() {
         return XP;
     }
-    public String getArmy() {
-        return army.getInfoString();
+    public Army getArmy() {
+        return army;
+    }
+    public HomeGround getHomeGround() {
+        return homeGround;
     }
 
     public void battleSomeone() {
         PlayerManager.getInstance().battleSomeone(this);
     }
 
-    public void setHomeGround () {
-
+    public void setHomeGround(HomeGround homeGround) {
+        this.homeGround = homeGround;
     }
 
     public void buyCharacter(String category, int tier) {

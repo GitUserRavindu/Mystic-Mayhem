@@ -8,10 +8,11 @@ public abstract class Character extends GameItem {
     // See category classes (Archer, Healer, ...) for category-specific methods
     // subcategories contain name and base stats for each type of character, no changes outside of this has to be made there
 
+    protected float maxHP;
     protected Armor armor;
     protected Artefact artefact;
 
-    private static final String[] characterOrder = {"Archer", "Knight"};
+    private static final String[] characterOrder = {"Archer", "Knight", "Healer"};   // Army is printed in this order
 
     public static String[] getCharacterOrder() {
         return characterOrder;
@@ -23,8 +24,9 @@ public abstract class Character extends GameItem {
         addEquipStats(artefact);
     }
 
-    public void attack(Character character) {
-
+    public void attack(Character target) {
+        double damage = 0.5*getAttack() - 0.1*target.getDefense();
+        target.addHealth(-damage);
     }
 
     public void giveEquip(Equipment item) {

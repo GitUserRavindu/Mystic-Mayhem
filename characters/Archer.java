@@ -3,7 +3,7 @@ package characters;
 public abstract class Archer extends Character {
 
     @Override
-    public String getCategory() {
+    public String getCategory () {
         return "Archer";
     }   
 }
