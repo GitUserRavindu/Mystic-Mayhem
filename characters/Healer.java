@@ -10,6 +10,6 @@ public abstract class Healer extends Character implements IHealer {
     }
 
     public void heal(Character character) {
-        character.getAttack();
+        System.out.println("Healed");
     }
 }
