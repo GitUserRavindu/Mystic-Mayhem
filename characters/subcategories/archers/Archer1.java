@@ -4,11 +4,9 @@ import characters.Archer;
 
 public class Archer1 extends Archer {
 
-    protected static final String NAME = "Shooter";
-
     @Override
     public String getName() {
-        return NAME;
+        return "Shooter";
     }
     
     @Override

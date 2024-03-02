@@ -10,17 +10,13 @@ public final class CharacterMaker {    // Factory design pattern
 
     private CharacterMaker() {}  // Cannot be Instantiated
 
-    private static final Map<Character, Function<Integer, Character>> characterCreators = new HashMap<>();
-
-    static {
-        characterCreators.put(Archer.class.getSimpleName(), CharacterMaker::newArcher);
-    }
-
-    public static Character newCharacter(String category, int tier) {
-        if (!characterCreators.containsKey(category)) {
-            throw new IllegalArgumentException("Unknown Character Type");
+    private static Character newCharacter(String category, int tier) {
+        switch (category) {
+            case Archer.getSimpleName() :
+                return newArcher(tier);
+            default:
+                throw new IllegalArgumentException("Unknown Character Type");
         }
-        return characterCreators.get(category).apply(tier);
     }
 
     private static Archer newArcher(int tier) {
