@@ -14,7 +14,7 @@ public final class CharacterMaker {    // Factory design pattern
             case "Knight" :
                 return newKnight(tier);
             default:
-                throw new IllegalArgumentException("Unknown Character Type");
+                throw new IllegalArgumentException("Invalid Category");
         }
     }
 
@@ -31,7 +31,7 @@ public final class CharacterMaker {    // Factory design pattern
             case 5:
                 return new Archer5();
             default:
-                throw new IllegalArgumentException("Unknown Tier");
+                throw new IllegalArgumentException("Invalid Tier");
         }
     }
     private static Knight newKnight(int tier) {

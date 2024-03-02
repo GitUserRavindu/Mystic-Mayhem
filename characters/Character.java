@@ -23,6 +23,10 @@ public abstract class Character extends GameItem {
         addEquipStats(artefact);
     }
 
+    public void attack(Character character) {
+
+    }
+
     public void giveEquip(Equipment item) {
         switch (item.getCategory()) {
             case "Armor":
