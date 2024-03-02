@@ -33,6 +33,16 @@ public abstract class GameItem {
         return spd;
     }
 
+    public void printInfo() {
+        System.out.println("Name      : " + getName());
+        System.out.println("Category  : " + getCategory());
+        System.out.println("Health  : " + getHealth());
+        System.out.println("Attack  : " + getAttack());
+        System.out.println("Defense : " + getDefense());
+        System.out.println("Speed   : " + getSpeed());
+        System.out.println("Price   : " + getPrice() + " gc");
+    }
+
     // Setters
     
     protected abstract void initStats();

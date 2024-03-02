@@ -1,19 +1,18 @@
 package characters;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.function.Function;
-
 import characters.subcategories.archers.*;
+import characters.subcategories.knights.*;
 
 public final class CharacterMaker {    // Factory design pattern
 
     private CharacterMaker() {}  // Cannot be Instantiated
 
-    private static Character newCharacter(String category, int tier) {
+    public static Character newCharacter(String category, int tier) {
         switch (category) {
-            case Archer.getSimpleName() :
+            case "Archer" :
                 return newArcher(tier);
+            case "Knight" :
+                return newKnight(tier);
             default:
                 throw new IllegalArgumentException("Unknown Character Type");
         }
@@ -32,31 +31,26 @@ public final class CharacterMaker {    // Factory design pattern
             case 5:
                 return new Archer5();
             default:
-                throw new IllegalArgumentException("Unknown Name");
+                throw new IllegalArgumentException("Unknown Tier");
         }
     }
-/*
-    public static Knight newKnight(String name) {
-        switch (name) {
-            case Knight1.getName():
+    private static Knight newKnight(int tier) {
+        switch (tier) {
+            case 1:
                 return new Knight1();
-                break;
-            case Knight2.getName():
+            case 2:
                 return new Knight2();
-                break;
-            case Knight3.getName():
+            case 3:
                 return new Knight3();
-                break;
-            case Knight4.getName():
+            case 4:
                 return new Knight4();
-                break;
-            case Knight5.getName():
+            case 5:
                 return new Knight5();
-                break;
             default:
-                throw new IllegalArgumentException("Unknown Name");
+                throw new IllegalArgumentException("Unknown Tier");
         }
     }
+    /*
 
     public static Mage newMage(String name) {
         switch (name) {

@@ -1,6 +1,6 @@
 import java.util.*;
 
-import characters.*;
+import characters.CharacterMaker;
 import core.*;
 import gameutils.Console;
 
@@ -11,8 +11,14 @@ public class Main {
 
         Player player1 = PM.newPlayer("whitewolf", "Geralt of Rivia");
         Player player2 = PM.newPlayer("evilwizard", "Stregobor");
-        player1.buyCharacter("Archer", 1);
+        // player1.buyCharacter("Archer", 1);
         // player1.battleSomeone();
-        Console.printState(player1);
+        player1.buyCharacter("Archer", 1);
+        player1.buyCharacter("Knight", 1);
+        player1.buyCharacter("Knight", 1);
+        player1.printArmySimpleInfo();
+        //GameItem legolas = CharacterMaker.newCharacter("Archer",1);
+        //Console.printState(player1);
+        //legolas.printInfo();
     }
 }

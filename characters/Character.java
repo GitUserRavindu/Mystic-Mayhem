@@ -11,19 +11,10 @@ public abstract class Character extends GameItem {
     protected Armor armor;
     protected Artefact artefact;
 
-    public static enum CharacterCategory {
-        ARCHER("Warrior"),
-        MAGE("Mage");
-    
-        private final String name;
-    
-        CharacterCategory(String name) {
-            this.name = name;
-        }
-    
-        public String getName() {
-            return name;
-        }
+    private static final String[] characterOrder = {"Archer", "Knight"};
+
+    public static String[] getCharacterOrder() {
+        return characterOrder;
     }
 
     public void reset() {

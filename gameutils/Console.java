@@ -27,7 +27,7 @@ public final class Console {
     public static void printInfo(Player player) {
         Utils.printStrings(new String[]{
             player.getName() + " (" + player.getUsername() + ")",
-            "Coins: " + player.getCoins(),
+            "Gold: " + player.getGold(),
             "XP: " + player.getXP(),
             "Army: " + player.getArmy(),
             "Home Ground: None",
