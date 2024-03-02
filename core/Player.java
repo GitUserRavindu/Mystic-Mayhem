@@ -1,5 +1,8 @@
 package core;
 
+import characters.Character;
+import characters.CharacterMaker;
+
 public class Player {
     private final String username;
     private String name;
@@ -27,10 +30,11 @@ public class Player {
     public float getCoins() {
         return coins;
     }
-
-    public void printStats () {
-        System.out.println(XP);
-        army.display();
+    public byte getXP() {
+        return XP;
+    }
+    public String getArmy() {
+        return army.getInfoString();
     }
 
     public void battleSomeone() {
@@ -38,6 +42,19 @@ public class Player {
     }
 
     public void setHomeGround () {
+
+    }
+
+    public void buyCharacter(String category, int tier) {
+        // Check if player already has someone of the category
+
+
+        Character character = CharacterMaker.newCharacter(category, tier);
+        // Check if player has enough gold
+
+
+        // Remove gold and add character to army
+        army.addCharacter(character);
 
     }
 

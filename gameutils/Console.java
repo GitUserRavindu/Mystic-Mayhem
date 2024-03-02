@@ -7,12 +7,9 @@ public final class Console {
     private Console() {}  // Cannot be Instantiated
 
     public static void printState(Player player) {
-        Utils.printStringsLineByLine(new String[]{
-            "Selected Player: " + player.getName() + " (" + player.getUsername() + ")",
-            "Coins: " + player.getCoins(),
-            "XP: 4",
-            "Army: Shooter (Archer), Templar (Knight), Saint (Healer)",
-            "Home Ground: None",
+        System.out.println("Selected Player: ");
+        printInfo(player);
+        Utils.printStrings(new String[]{
             "",
             "Select Action",
             "1: Look for an opponent to battle",
@@ -24,6 +21,16 @@ public final class Console {
             "7: Help",
             "",
             "0: Change Player"
+        });
+    }
+
+    public static void printInfo(Player player) {
+        Utils.printStrings(new String[]{
+            player.getName() + " (" + player.getUsername() + ")",
+            "Coins: " + player.getCoins(),
+            "XP: " + player.getXP(),
+            "Army: " + player.getArmy(),
+            "Home Ground: None",
         });
     }
 

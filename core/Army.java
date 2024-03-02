@@ -1,16 +1,25 @@
 package core;
 
-import java.util.Map;
+import java.util.HashMap;
 
 import characters.Character;
 
 public class Army {
     
-    private Map<String, Character> characters;
+    private HashMap<String, Character> characters;
+
+    public Army() {
+        characters = new HashMap<>();
+    }
 
     public void addCharacter(Character character) {
         characters.put(character.getCategory(), character);
     }
+
+    public String getInfoString() {
+        return "T";
+    }
+
 
     public void display() {
         System.out.println("Okay");

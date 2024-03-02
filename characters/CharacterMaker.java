@@ -1,54 +1,42 @@
 package characters;
 
-import characters.subcategories.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Function;
+
+import characters.subcategories.archers.*;
 
 public final class CharacterMaker {    // Factory design pattern
 
     private CharacterMaker() {}  // Cannot be Instantiated
 
-    public static Character newCharacter(String category, String name) {
-        switch (category) {
-            case Archer.getCategory():
-                return newArcher(name);
-                break;
-            /* 
-            case Knight.getCategory():
-                return newKnight(name);
-                break;
-            case Mage.getCategory():
-                return newMage(name);
-                break;
-            case Healer.getCategory():
-                return newHealer(name);
-                break;
-            case Mythical.getCategory():
-                return newMythical(name);
-                break;
-            */
-            default:
-                throw new IllegalArgumentException("Unknown Character Type");
-        }
+    private static final Map<Character, Function<Integer, Character>> characterCreators = new HashMap<>();
+
+    static {
+        characterCreators.put(Archer.class.getSimpleName(), CharacterMaker::newArcher);
     }
 
-    public static Archer newArcher(String name) {
-        switch (name) {
-            case Archer1.NAME:
+    public static Character newCharacter(String category, int tier) {
+        if (!characterCreators.containsKey(category)) {
+            throw new IllegalArgumentException("Unknown Character Type");
+        }
+        return characterCreators.get(category).apply(tier);
+    }
+
+    private static Archer newArcher(int tier) {
+        switch (tier) {
+            case 1:
                 return new Archer1();
-                break;
-            case Archer2.getName():
+            case 2:
                 return new Archer2();
-                break;
-            case Archer3.getName():
+            case 3:
                 return new Archer3();
-                break;
-            case Archer4.getName():
+            case 4:
                 return new Archer4();
-                break;
-            case Archer5.getName():
+            case 5:
                 return new Archer5();
-                break;
             default:
-                throw new IllegalArgumentException("Unknown Name")
+                throw new IllegalArgumentException("Unknown Name");
         }
     }
 /*
