@@ -38,7 +38,7 @@ public final class Utils {
         return input;
     }
 
-    public static void printStringsLineByLine(String[] arr) {
+    public static void printStrings(String[] arr) {
         for (String str : arr) {
             System.out.println(str);
         }

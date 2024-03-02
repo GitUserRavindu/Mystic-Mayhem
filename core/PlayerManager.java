@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
+import gameutils.Console;
 import gameutils.Utils;
 
 public class PlayerManager {
@@ -83,7 +84,7 @@ public class PlayerManager {
             System.out.println("Looking for opponent...");
             opponent = getRandomOpponent (player);
             Utils.waitSeconds(1);
-            opponent.printStats();
+            Console.printInfo(opponent);
             playerChoice = Utils.readString("Enter 'F' to battle, 'N' to look for another opponent, or anything else to exit: ");
             Utils.waitSeconds(1);
         } while (playerChoice.toUpperCase().equals("N"));
