@@ -85,84 +85,84 @@ public class HomeGrounds {
         System.out.println();
     }
 
-public static void updateCharacterStats(Character character, HomeGround homeGround) {
-    HomeGround characterHomeground = getHomeGround(character);
-    System.out.print(characterHomeground.getCharacterType() + " " + character.getName());
-    switch (homeGround) {
-        case HILLCREST:
-            switch (characterHomeground) {
-                case HILLCREST:
-                    character.addAttack(1);
-                    character.addDefense(1);
-                    System.out.println(" gains +1 Attack and +1 Defense in Hillcrest.");
-                    break;
-                case MARSHLAND:
-                    character.addAttack(1);
-                    character.addDefense(1);
-                    System.out.println(" gains +1 Attack and +1 Defense in Hillcrest.");
-                case DESERT:
-                    character.addSpeed(-1);
-                    System.out.println("'s Speed decreases by 1 in Hillcrest.");
-                default:
-                    System.out.println("'s stats are unchanged in Arcane.");
-                    break;
-            }
-            break;
-        case MARSHLAND:
-            switch (characterHomeground) {
-                case MARSHLAND:
-                    character.addDefense(2);
-                    System.out.println(" gains +2 Defense in Marshland.");
-                    break;
-                case DESERT:
-                    character.addAttack(-1);
-                    System.out.println("'s Attack decreases by 1 in Marshland.");
-                    break;
-                case ARCANE:
-                    character.addSpeed(-1);
-                    System.out.println("'s Speed decreases by 1 in Marshland.");
-                    break;
-                default:
-                    System.out.println("'s stats are unchanged in Marshland.");
-                    break;
-            }
-            break;
-        case DESERT:
-            switch (characterHomeground) {
-                case DESERT:
-                    character.addAttack(1);
-                    System.out.println(" gains +1 Attack in Desert.");
-                    break;
-                case MARSHLAND:
-                    character.addHealth(-1);
-                    System.out.println("'s Health decreases by 1 in Desert.");
-                    break;
-                default:
-                    System.out.println("'s stats are unchanged in Desert.");
-                    break;
-            }
-            break;
-        case ARCANE:
-            switch (characterHomeground) {
-                case ARCANE:
-                    character.addAttack(2);
-                    System.out.println(" gains +2 Attack in Arcane.");
-                    break;
-                case HILLCREST:
-                case MARSHLAND:
-                    character.addSpeed(-1);
-                    character.addDefense(-1);
-                    System.out.println("'s Speed and Defense decrease by 1 in Arcane.");
-                    break;
-                default:
-                    System.out.println("'s stats are unchanged in Arcane.");
-                    break;
-            }
-            break;
-        default:
-            break;
+    public static void updateCharacterStats(Character character, HomeGround homeGround) {
+        HomeGround characterHomeground = getHomeGround(character);
+        System.out.print(characterHomeground.getCharacterType() + " " + character.getName());
+        switch (homeGround) {
+            case HILLCREST:
+                switch (characterHomeground) {
+                    case HILLCREST:
+                        character.addAttack(1);
+                        character.addDefense(1);
+                        System.out.println(" gains +1 Attack and +1 Defense in Hillcrest.");
+                        break;
+                    case MARSHLAND:
+                        character.addAttack(1);
+                        character.addDefense(1);
+                        System.out.println(" gains +1 Attack and +1 Defense in Hillcrest.");
+                    case DESERT:
+                        character.addSpeed(-1);
+                        System.out.println("'s Speed decreases by 1 in Hillcrest.");
+                    default:
+                        System.out.println("'s stats are unchanged in Arcane.");
+                        break;
+                }
+                break;
+            case MARSHLAND:
+                switch (characterHomeground) {
+                    case MARSHLAND:
+                        character.addDefense(2);
+                        System.out.println(" gains +2 Defense in Marshland.");
+                        break;
+                    case DESERT:
+                        character.addAttack(-1);
+                        System.out.println("'s Attack decreases by 1 in Marshland.");
+                        break;
+                    case ARCANE:
+                        character.addSpeed(-1);
+                        System.out.println("'s Speed decreases by 1 in Marshland.");
+                        break;
+                    default:
+                        System.out.println("'s stats are unchanged in Marshland.");
+                        break;
+                }
+                break;
+            case DESERT:
+                switch (characterHomeground) {
+                    case DESERT:
+                        character.addAttack(1);
+                        System.out.println(" gains +1 Attack in Desert.");
+                        break;
+                    case MARSHLAND:
+                        character.addHealth(-1);
+                        System.out.println("'s Health decreases by 1 in Desert.");
+                        break;
+                    default:
+                        System.out.println("'s stats are unchanged in Desert.");
+                        break;
+                }
+                break;
+            case ARCANE:
+                switch (characterHomeground) {
+                    case ARCANE:
+                        character.addAttack(2);
+                        System.out.println(" gains +2 Attack in Arcane.");
+                        break;
+                    case HILLCREST:
+                    case MARSHLAND:
+                        character.addSpeed(-1);
+                        character.addDefense(-1);
+                        System.out.println("'s Speed and Defense decrease by 1 in Arcane.");
+                        break;
+                    default:
+                        System.out.println("'s stats are unchanged in Arcane.");
+                        break;
+                }
+                break;
+            default:
+                break;
+        }
     }
-}
 
     public static HomeGround getHomeGround(Character character) {
         return characterHomegrounds.get(character.getName());
