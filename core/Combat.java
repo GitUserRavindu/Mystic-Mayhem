@@ -116,7 +116,7 @@ public final class Combat {
             attacker = attackerSPD.peek();                // homeGroundBonus() implementation needs to be modified for this to work properly
             attackerSPD.add(healer);
             */
-            System.out.println(attacker.getNameAndCategory() + " army is at full health.");
+            System.out.println(attacker.getName() + " has no one to heal. Army is at full health.");
             return;
         }
 
