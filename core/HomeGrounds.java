@@ -9,15 +9,21 @@ import characters.Character;
 public class HomeGrounds {
     
     public enum HomeGround{
-        HILLCREST("Highlanders"),
-        MARSHLAND("Marshlanders"),
-        DESERT("Sunchildren"),
-        ARCANE("Mystics");
+        HILLCREST("Hillcrest", "Highlanders"),
+        MARSHLAND("Marshland", "Marshlanders"),
+        DESERT("Desert", "Sunchildren"),
+        ARCANE("Arcane", "Mystics");
 
+        private String name;
         private String affinityName;
 
-        HomeGround(String affinityName) {
+        HomeGround(String name, String affinityName) {
+            this.name = name;
             this.affinityName = affinityName;
+        }
+
+        public String getName() {
+            return name;
         }
 
         public String getAffinityName() {

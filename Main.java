@@ -32,7 +32,7 @@ public class Main {
         player1.printArmyInfo();
         player2.printArmyInfo();
         //GameItem legolas = CharacterMaker.newCharacter("Archer",1);
-        //Console.printState(player1);
+        Console.printState(player2);
         //legolas.printInfo();
     }
 }

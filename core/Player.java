@@ -41,6 +41,9 @@ public class Player {
     public HomeGround getHomeGround() {
         return homeGround;
     }
+    public String getHomeGroundName() {
+        return homeGround.getName();
+    }
 
     public void battleSomeone() {
         PlayerManager.getInstance().battleSomeone(this);
@@ -74,6 +77,10 @@ public class Player {
     }
     public void printArmyInfo() {
         army.printInfo();
+    }
+
+    public String getArmyInfo() {
+        return army.getInfoString();
     }
 
     public void addGold (float amount) {

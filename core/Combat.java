@@ -71,6 +71,9 @@ public final class Combat {
 
         Character target;
 
+        // Implement taking turns
+        // If army is at full health, move to next in Queue and execute Home bonus
+
         if (attacker instanceof IHealer) {
             target = attackerHP.poll();
 
