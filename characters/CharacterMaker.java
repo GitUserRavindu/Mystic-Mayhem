@@ -2,7 +2,9 @@ package characters;
 
 import characters.subcategories.archers.*;
 import characters.subcategories.knights.*;
+import characters.subcategories.mages.*;
 import characters.subcategories.healers.*;
+import characters.subcategories.mythicalcreatures.*;
 
 public final class CharacterMaker {    // Factory design pattern
 
@@ -14,7 +16,11 @@ public final class CharacterMaker {    // Factory design pattern
                 return newArcher(tier);
             case "Knight" :
                 return newKnight(tier);
+            case "Mage" :
+                return newHealer(tier);
             case "Healer" :
+                return newHealer(tier);
+            case "Mythical Healer" :
                 return newHealer(tier);
             default:
                 throw new IllegalArgumentException("Invalid Category");
@@ -50,7 +56,24 @@ public final class CharacterMaker {    // Factory design pattern
             case 5:
                 return new Knight5();
             default:
-                throw new IllegalArgumentException("Unknown Tier");
+                throw new IllegalArgumentException("Invalid Tier");
+        }
+    }
+
+    public static Mage newMage(int tier) {
+        switch (tier) {
+            case 1:
+                return new Mage1();
+            case 2:
+                return new Mage2();
+            case 3:
+                return new Mage3();
+            case 4:
+                return new Mage4();
+            case 5:
+                return new Mage5();
+            default:
+                throw new IllegalArgumentException("Invalid Tier");
         }
     }
     
@@ -67,55 +90,24 @@ public final class CharacterMaker {    // Factory design pattern
             case 5:
                 return new Healer5();
             default:
-                throw new IllegalArgumentException("Unknown Tier");
+                throw new IllegalArgumentException("Invalid Tier");
         }
     }
-
-    /*
-
-    public static Mage newMage(String name) {
-        switch (name) {
-            case Mage1.getName():
-                return new Mage1();
-                break;
-            case Mage2.getName():
-                return new Mage2();
-                break;
-            case Mage3.getName():
-                return new Mage3();
-                break;
-            case Mage4.getName():
-                return new Mage4();
-                break;
-            case Mage5.getName():
-                return new Mage5();
-                break;
+    
+    public static MythicalCreature newMythicalCreature(int tier) {
+        switch (tier) {
+            case 1:
+                return new MythicalCreature1();
+            case 2:
+                return new MythicalCreature2();
+            case 3:
+                return new MythicalCreature3();
+            case 4:
+                return new MythicalCreature4();
+            case 5:
+                return new MythicalCreature5();
             default:
-                throw new IllegalArgumentException("Unknown Name");
+                throw new IllegalArgumentException("Invalid Tier");
         }
     }
-
-
-    public static Mythical newMythical(String name) {
-        switch (name) {
-            case Mythical1.getName():
-                return new Mythical1();
-                break;
-            case Mythical2.getName():
-                return new Mythical2();
-                break;
-            case Mythical3.getName():
-                return new Mythical3();
-                break;
-            case Mythical4.getName():
-                return new Mythical4();
-                break;
-            case Mythical5.getName():
-                return new Mythical5();
-                break;
-            default:
-                throw new IllegalArgumentException("Unknown Name");
-        }
-    }
-*/
 }
