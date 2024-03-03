@@ -28,12 +28,12 @@ public final class Combat {
         PriorityQueue<Character> opponentSPD = new PriorityQueue<>(Comparator.comparingInt(Character::getSpeed).reversed());
         PriorityQueue<Character> opponentHP = new PriorityQueue<>(Comparator.comparingDouble(Character::getHealth));
 
+        HomeGrounds.addHomeGroundStats(challenger,opponent, homeGround);
+
         for (Character character : challengerArmy.getCharacters()) {
-            HomeGrounds.updateCharacterStats(character, homeGround);
             addToQueues(challengerSPD, challengerHP, character);
         }
         for (Character character : opponentArmy.getCharacters()) {
-            HomeGrounds.updateCharacterStats(character, homeGround);
             addToQueues(opponentSPD, opponentHP, character);
         }
 
@@ -42,10 +42,10 @@ public final class Combat {
 
         for (int i = 0; i < 10; ++i) {
 
-            battleContinue = updateSpeedQueue(challengerSPD, tempChallengerSPD);
+            battleContinue = refreshSpeedQueue(challengerSPD, tempChallengerSPD);
             if (!battleContinue) break;
 
-            System.out.println("< Round " + (i+1) + " >");
+            System.out.println("< Turn " + (i+1) + " >");
             System.out.print(challenger.getName() + "'s Turn: ");
 
             Character attacker;
@@ -62,7 +62,7 @@ public final class Combat {
             battleMove(challengerSPD, challengerHP, attacker, opponentSPD, opponentHP);
             HomeGrounds.homeGroundBonus(homeGround, challengerSPD, challengerHP, attacker, opponentSPD, opponentHP);
 
-            battleContinue = updateSpeedQueue(opponentSPD, tempOpponentSPD);
+            battleContinue = refreshSpeedQueue(opponentSPD, tempOpponentSPD);
             if (!battleContinue) break;
 
             System.out.print(opponent.getName() + "'s Turn: ");
@@ -72,13 +72,15 @@ public final class Combat {
             battleMove(opponentSPD, opponentHP, attacker, challengerSPD, challengerHP);
             HomeGrounds.homeGroundBonus(homeGround, opponentSPD, opponentHP, attacker, challengerSPD, challengerHP);
 
+            System.out.println();
+
         }
 
         challengerArmy.reset();
         opponentArmy.reset();
 
-        updateSpeedQueue(challengerSPD, tempChallengerSPD);
-        updateSpeedQueue(opponentSPD, tempOpponentSPD);
+        refreshSpeedQueue(challengerSPD, tempChallengerSPD);
+        refreshSpeedQueue(opponentSPD, tempOpponentSPD);
 
         if (opponentSPD.isEmpty()) return "Win!";
         if (challengerSPD.isEmpty()) return "Loss!";
@@ -106,7 +108,7 @@ public final class Combat {
 
             if (target != null) {
                 ((IHealer)attacker).heal(target);
-                updateQueues(attackerSPD, attackerHP, target);
+                updateQueuesSpdHp(attackerSPD, attackerHP, target);
                 return;
             }
             /*
@@ -120,11 +122,11 @@ public final class Combat {
 
         target = defenderHP.poll();
         attacker.attack(target);
-        updateQueues(defenderSPD, defenderHP, target);
+        updateQueuesSpdHp(defenderSPD, defenderHP, target);
         
     }
 
-    public static boolean updateSpeedQueue(PriorityQueue<Character> SPD, List<Character> tempSPD) {
+    public static boolean refreshSpeedQueue(PriorityQueue<Character> SPD, List<Character> tempSPD) {
         if (SPD.isEmpty()) {
             // System.out.println("Reset Order"); For Testing
             for (Character character : tempSPD) {
@@ -139,12 +141,19 @@ public final class Combat {
         return true;
     }
 
-    public static void updateQueues(PriorityQueue<Character> SPD, PriorityQueue<Character> HP, Character character) {
+    public static void updateQueuesSpdHp(PriorityQueue<Character> SPD, PriorityQueue<Character> HP, Character character) {
         if (!character.isAlive()) {
             SPD.remove(character);
             return;
         }
         HP.add(character);
+    }
+
+    public static void updateQueue(PriorityQueue<Character> queue, Character character) {
+        if (queue.contains(character)) {
+            queue.remove(character);
+            queue.add(character);
+        }
     }
 
     public static void addToQueues(PriorityQueue<Character> SPD, PriorityQueue<Character> HP, Character character) {

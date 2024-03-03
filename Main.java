@@ -1,6 +1,3 @@
-import java.util.*;
-
-import characters.CharacterMaker;
 import core.*;
 import core.HomeGrounds.HomeGround;
 import gameutils.Console;
@@ -24,7 +21,7 @@ public class Main {
         player2.buyCharacter("Mage", 3);
 
         player1.setHomeGround(HomeGround.HILLCREST);
-        player2.setHomeGround(HomeGround.MARSHLAND);
+        player2.setHomeGround(HomeGround.ARCANE);
         System.out.println(Combat.battle(player1, player2));
         //GameItem legolas = CharacterMaker.newCharacter("Archer",1);
         Console.printState(player2);

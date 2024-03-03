@@ -35,7 +35,7 @@ public abstract class Character extends GameItem {
         System.out.print(getNameAndCategory() + " attacks " + target.getNameAndCategory() + " for " + damage + " damage. " + target.getName() + " " + target.getHealth() + "/" + target.getMaxHP() + " HP.");
         if (!target.isAlive()){
             System.out.println(" " + target.getNameAndCategory() + " dies.");
-        } else System.out.println("");
+        } else System.out.println();
     }
 
     public void giveEquip(Equipment item) {
@@ -71,6 +71,18 @@ public abstract class Character extends GameItem {
     public void setMaxHP() {
         maxHP = hp;
     }
+
+    public void addMaxHP(double change) {
+        maxHP += (float) change;
+        maxHP = Math.round(maxHP * 10.0f) / 10.0f;
+        addHealth(change);
+    }
+
+    public void maxHPIncrease(double change) {
+        addMaxHP(change);
+        System.out.println(getNameAndCategory() + " max HP increased by " + Math.round(change*10.0f)/10.0f + ". " + getName() + " " + getHealth() + "/" + getMaxHP() + " HP.");
+    }
+
 
     public boolean atMaxHP() {
         return hp == maxHP;
