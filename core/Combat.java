@@ -15,11 +15,12 @@ public final class Combat {
     
     public static String battle(Player challenger, Player opponent) {
         // Manage Order of HP and speed of both sides
+
+        boolean battleContinue = true;
+        HomeGround homeGround = opponent.getHomeGround();
         
         Army challengerArmy = challenger.getArmy();
         Army opponentArmy = opponent.getArmy();
-
-        HomeGround homeGround = opponent.getHomeGround();
 
         PriorityQueue<Character> challengerSPD = new PriorityQueue<>(Comparator.comparingInt(Character::getSpeed).reversed());
         PriorityQueue<Character> challengerHP = new PriorityQueue<>(Comparator.comparingDouble(Character::getHealth));
@@ -28,7 +29,6 @@ public final class Combat {
         PriorityQueue<Character> opponentHP = new PriorityQueue<>(Comparator.comparingDouble(Character::getHealth));
 
         for (Character character : challengerArmy.getCharacters()) {
-            // Set home ground here
             HomeGrounds.updateCharacterStats(character, homeGround);
             addToQueues(challengerSPD, challengerHP, character);
         }
@@ -37,30 +37,48 @@ public final class Combat {
             addToQueues(opponentSPD, opponentHP, character);
         }
 
-
-
+        List<Character> tempChallengerSPD = new ArrayList<>();
+        List<Character> tempOpponentSPD = new ArrayList<>();
 
         for (int i = 0; i < 10; ++i) {
 
-            if (challengerSPD.isEmpty()) break;
+            battleContinue = updateSpeedQueue(challengerSPD, tempChallengerSPD);
+            if (!battleContinue) break;
+
             System.out.println("< Round " + (i+1) + " >");
             System.out.print(challenger.getName() + "'s Turn: ");
 
-            Character attacker = challengerSPD.peek();
+            Character attacker;
+
+            /*
+            boolean doneMove = false;
+            while (!doneMove) {   // Healers won't move if army is at full Health
+                attacker = challengerSPD.poll();
+
+            }
+            */
+            attacker = challengerSPD.poll();
+            tempChallengerSPD.add(attacker);
             battleMove(challengerSPD, challengerHP, attacker, opponentSPD, opponentHP);
             HomeGrounds.homeGroundBonus(homeGround, challengerSPD, challengerHP, attacker, opponentSPD, opponentHP);
 
-            if (opponentSPD.isEmpty()) break;
+            battleContinue = updateSpeedQueue(opponentSPD, tempOpponentSPD);
+            if (!battleContinue) break;
+
             System.out.print(opponent.getName() + "'s Turn: ");
             
-            attacker = opponentSPD.peek();
+            attacker = opponentSPD.poll();
+            tempOpponentSPD.add(attacker);
             battleMove(opponentSPD, opponentHP, attacker, challengerSPD, challengerHP);
-            HomeGrounds.homeGroundBonus(homeGround, challengerSPD, challengerHP, attacker, opponentSPD, opponentHP);
+            HomeGrounds.homeGroundBonus(homeGround, opponentSPD, opponentHP, attacker, challengerSPD, challengerHP);
 
         }
 
         challengerArmy.reset();
         opponentArmy.reset();
+
+        updateSpeedQueue(challengerSPD, tempChallengerSPD);
+        updateSpeedQueue(opponentSPD, tempOpponentSPD);
 
         if (opponentSPD.isEmpty()) return "Win!";
         if (challengerSPD.isEmpty()) return "Loss!";
@@ -99,14 +117,30 @@ public final class Combat {
             System.out.println(attacker.getNameAndCategory() + " army is at full health.");
             return;
         }
+
         target = defenderHP.poll();
         attacker.attack(target);
         updateQueues(defenderSPD, defenderHP, target);
         
     }
 
+    public static boolean updateSpeedQueue(PriorityQueue<Character> SPD, List<Character> tempSPD) {
+        if (SPD.isEmpty()) {
+            // System.out.println("Reset Order"); For Testing
+            for (Character character : tempSPD) {
+                if (character.isAlive()) {
+                    SPD.add(character);
+                    // System.out.println("Added " + character.getNameAndCategory());
+                }
+            }
+            tempSPD.clear();
+            if (SPD.isEmpty()) return false;
+        }
+        return true;
+    }
+
     public static void updateQueues(PriorityQueue<Character> SPD, PriorityQueue<Character> HP, Character character) {
-        if (character.getHealth() <= 0) {
+        if (!character.isAlive()) {
             SPD.remove(character);
             return;
         }

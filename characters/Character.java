@@ -32,7 +32,10 @@ public abstract class Character extends GameItem {
     public void attack(Character target) {
         double damage = 0.5*getAttack() - 0.1*target.getDefense();
         target.addHealth(-damage);
-        System.out.println(getNameAndCategory() + " attacks " + target.getNameAndCategory() + " for " + damage + " damage. " + target.getName() + " " + target.getHealth() + "/" + target.getMaxHP() + " HP.");
+        System.out.print(getNameAndCategory() + " attacks " + target.getNameAndCategory() + " for " + damage + " damage. " + target.getName() + " " + target.getHealth() + "/" + target.getMaxHP() + " HP.");
+        if (!target.isAlive()){
+            System.out.println(" " + target.getNameAndCategory() + " dies.");
+        } else System.out.println("");
     }
 
     public void giveEquip(Equipment item) {
@@ -76,5 +79,9 @@ public abstract class Character extends GameItem {
     public void addHealth(double change) {
         super.addHealth(change);
         if (hp > maxHP) hp = maxHP;
+    }
+
+    public boolean isAlive() {
+        return hp > 0;
     }
 }
