@@ -46,8 +46,8 @@ public class Army {
     public void printInfo() {
         for (String category : Character.getCharacterOrder()) {
             if (armyCharacters.containsKey(category)) {
-
-                System.out.println(category + ": " + getCharacterName(category));
+                getCharacter(category).printInfo();
+                System.out.println("");
             }
         }
     }

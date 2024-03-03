@@ -18,6 +18,11 @@ public abstract class Character extends GameItem {
         return characterOrder;
     }
 
+    public Character() {
+        super();
+        setMaxHP();
+    }
+
     public void reset() {
         initStats();
         addEquipStats(armor);
@@ -27,6 +32,7 @@ public abstract class Character extends GameItem {
     public void attack(Character target) {
         double damage = 0.5*getAttack() - 0.1*target.getDefense();
         target.addHealth(-damage);
+        System.out.println(getNameAndCategory() + " attacks " + target.getNameAndCategory() + " for " + damage + " damage. " + target.getName() + " " + target.getHealth() + "/" + target.getMaxHP() + " HP.");
     }
 
     public void giveEquip(Equipment item) {
@@ -53,5 +59,13 @@ public abstract class Character extends GameItem {
         def += item.getDefense();
         hp += item.getHealth();
         spd += item.getSpeed();
+    }
+
+    public float getMaxHP() {
+        return maxHP;
+    }
+
+    public void setMaxHP() {
+        maxHP = hp;
     }
 }

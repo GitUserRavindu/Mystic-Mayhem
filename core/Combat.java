@@ -41,14 +41,14 @@ public final class Combat {
         for (int i = 0; i < 10; ++i) {
 
             if (challengerSPD.isEmpty()) break;
-            System.out.println(challenger.getName() + "'s Turn:");
+            System.out.print(challenger.getName() + "'s Turn: ");
 
             Character attacker = challengerSPD.peek();
             battleMove(challengerSPD, challengerHP, attacker, opponentSPD, opponentHP);
             HomeGrounds.homeGroundBonus(homeGround, challengerSPD, challengerHP, attacker, opponentSPD, opponentHP);
 
             if (opponentSPD.isEmpty()) break;
-            System.out.println(opponent.getName() + "'s Turn:");
+            System.out.print(opponent.getName() + "'s Turn: ");
             
             attacker = opponentSPD.peek();
             battleMove(opponentSPD, opponentHP, attacker, challengerSPD, challengerHP);

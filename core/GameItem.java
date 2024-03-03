@@ -18,6 +18,10 @@ public abstract class GameItem {
     public abstract String getCategory();
     public abstract String getName();
 
+    public String getNameAndCategory() {
+        return getName() + " (" + getCategory().substring(0,2) + ")";
+    }
+
     public short getPrice() {
         return price;
     }
@@ -65,6 +69,7 @@ public abstract class GameItem {
     public void addHealth(double change) {
         hp += (float) change;
         hp = Math.round(hp * 10.0f) / 10.0f;
+        if (hp < 0) hp = 0;
     }
     public void addAttack(double change) {
         atk += (float) change;

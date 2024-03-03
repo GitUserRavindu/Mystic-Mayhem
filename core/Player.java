@@ -72,6 +72,9 @@ public class Player {
     public void printArmySimpleInfo() {
         army.printSimpleInfo();
     }
+    public void printArmyInfo() {
+        army.printInfo();
+    }
 
     public void addGold (float amount) {
         gold += amount;
