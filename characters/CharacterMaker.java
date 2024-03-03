@@ -20,7 +20,7 @@ public final class CharacterMaker {    // Factory design pattern
                 return newHealer(tier);
             case "Healer" :
                 return newHealer(tier);
-            case "Mythical Healer" :
+            case "Mythical Creature" :
                 return newHealer(tier);
             default:
                 throw new IllegalArgumentException("Invalid Category");

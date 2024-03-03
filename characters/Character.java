@@ -12,7 +12,7 @@ public abstract class Character extends GameItem {
     protected Armor armor;
     protected Artefact artefact;
 
-    private static final String[] characterOrder = {"Archer", "Knight", "Healer"};   // Army is printed in this order
+    private static final String[] characterOrder = {"Archer", "Knight", "Mage", "Healer", "Mythical Creature"};   // Army is printed in this order
 
     public static String[] getCharacterOrder() {
         return characterOrder;
@@ -67,5 +67,14 @@ public abstract class Character extends GameItem {
 
     public void setMaxHP() {
         maxHP = hp;
+    }
+
+    public boolean atMaxHP() {
+        return hp == maxHP;
+    }
+
+    public void addHealth(double change) {
+        super.addHealth(change);
+        if (hp > maxHP) hp = maxHP;
     }
 }

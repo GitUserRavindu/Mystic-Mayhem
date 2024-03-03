@@ -1,6 +1,8 @@
 package core;
 
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 import java.util.PriorityQueue;
 
 import characters.Character;
@@ -41,6 +43,7 @@ public final class Combat {
         for (int i = 0; i < 10; ++i) {
 
             if (challengerSPD.isEmpty()) break;
+            System.out.println("< Round " + (i+1) + " >");
             System.out.print(challenger.getName() + "'s Turn: ");
 
             Character attacker = challengerSPD.peek();
@@ -59,23 +62,43 @@ public final class Combat {
         challengerArmy.reset();
         opponentArmy.reset();
 
-        if (!opponentSPD.isEmpty()) return "Win!";
-        if (!challengerSPD.isEmpty()) return "Loss!";
+        if (opponentSPD.isEmpty()) return "Win!";
+        if (challengerSPD.isEmpty()) return "Loss!";
         return "Draw";
     }
 
     public static void battleMove(PriorityQueue<Character> attackerSPD, PriorityQueue<Character> attackerHP, Character attacker, PriorityQueue<Character> defenderSPD, PriorityQueue<Character> defenderHP) {
 
+        Character target;
+
         if (attacker instanceof IHealer) {
-            Character target = attackerHP.poll();
-            ((IHealer)attacker).heal(target);
-            updateQueues(attackerSPD, attackerHP, target);
+            target = attackerHP.poll();
+
+            List<Character> maxHP = new ArrayList<>();      // Skip characters that are at max HP
+            while (target != null && target.atMaxHP()) {
+                maxHP.add(target);
+                target = attackerHP.poll();
+            }
+            for (Character character : maxHP) {
+                attackerHP.add(character);
+            }
+
+            if (target != null) {
+                ((IHealer)attacker).heal(target);
+                updateQueues(attackerSPD, attackerHP, target);
+                return;
+            }
+            /*
+            Character healer = attackerSPD.poll();        // Move on to an attacker instead
+            attacker = attackerSPD.peek();                // homeGroundBonus() implementation needs to be modified for this to work properly
+            attackerSPD.add(healer);
+            */
+            System.out.println(attacker.getNameAndCategory() + " army is at full health.");
+            return;
         }
-        else {
-            Character target = defenderHP.poll();
-            attacker.attack(target);
-            updateQueues(defenderSPD, defenderHP, target);
-        }
+        target = defenderHP.poll();
+        attacker.attack(target);
+        updateQueues(defenderSPD, defenderHP, target);
         
     }
 

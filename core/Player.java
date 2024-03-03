@@ -15,7 +15,7 @@ public class Player {
     protected Player (String username, String name) {
         this.username = username;
         this.name = name;
-        gold = 500;
+        gold = 5000;   // Change this back
         XP = 0;
         army = new Army();
     }

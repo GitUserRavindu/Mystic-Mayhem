@@ -12,8 +12,8 @@ public abstract class Healer extends Character implements IHealer {
     @Override
     public void heal(Character target) {
         double healing = 0.5*getAttack();
-        target.addHealth(-healing);
-        System.out.println(getNameAndCategory() + " heals " + target.getNameAndCategory() + " for " + healing + "health. " + target + " " + target.getHealth() + " HP.");
+        target.addHealth(healing);
+        System.out.println(getNameAndCategory() + " heals " + target.getNameAndCategory() + " for " + healing + " health. " + target.getName() + " " + target.getHealth() + "/" + target.getMaxHP() + " HP.");
     }
 
     @Override

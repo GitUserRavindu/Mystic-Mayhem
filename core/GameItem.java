@@ -19,7 +19,7 @@ public abstract class GameItem {
     public abstract String getName();
 
     public String getNameAndCategory() {
-        return getName() + " (" + getCategory().substring(0,2) + ")";
+        return getName() + " [" + getCategory().substring(0,1) + "]";
     }
 
     public short getPrice() {
@@ -42,20 +42,17 @@ public abstract class GameItem {
     // Printers
 
     public void printInfo() {
-        System.out.println("Name      : " + getName());
-        System.out.println("Category  : " + getCategory());
+        System.out.println("Name    : " + getName());
+        System.out.println("Category: " + getCategory());
         System.out.println("Health  : " + getHealth());
         System.out.println("Attack  : " + getAttack());
         System.out.println("Defense : " + getDefense());
         System.out.println("Speed   : " + getSpeed());
-        System.out.println("Price   : " + getPrice() + " gc");
+        System.out.println("Value   : " + getPrice() + " gc");
     }
 
     // Setters
     
-
-    // Modify Values
-
     public void addStats(double hp, int atk, int def, int spd) {
         hp += (float) hp;
         atk += (float) atk;
