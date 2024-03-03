@@ -173,13 +173,13 @@ public static void updateCharacterStats(Character character, HomeGround homeGrou
         
         switch (getHomeGround(attacker)) {
             case HILLCREST:
-                System.out.print("-- Highlander | Bonus Turn: ");
+                System.out.print("-- Highlander Bonus Turn: ");
                 attacker.addAttack(-attacker.getAttack()*0.8); // Attacks at 0.2 x Normal Attack
                 Combat.battleMove(attackerSPD, attackerHP, attacker, defenderSPD, defenderHP);
                 attacker.addAttack(attacker.getAttack()*5);  // Return to Normal
                 break;
             case ARCANE:
-                System.out.print("-- Mystic | HP Increase: ");
+                System.out.print("-- Mystic HP Increase: ");
                 attacker.maxHPIncrease(attacker.getHealth()*0.1);
                 Combat.updateQueue(attackerHP, attacker);
             default:
