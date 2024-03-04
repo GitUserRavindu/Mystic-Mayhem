@@ -18,7 +18,7 @@ public final class Console {
             "4: Sell character",
             "5: Set Home Ground",
             "6: Inspect Army",
-            "7: Help",
+            // "7: Help",
             "",
             "0: Change Player"
         });
@@ -27,10 +27,10 @@ public final class Console {
     public static void printInfo(Player player) {
         Utils.printStrings(new String[]{
             player.getName() + " (" + player.getUsername() + ")",
-            "Coins: " + player.getCoins(),
+            "Gold: " + player.getGold(),
             "XP: " + player.getXP(),
-            "Army: " + player.getArmy(),
-            "Home Ground: None",
+            "Army: " + player.getArmyInfo(),
+            "Home Ground: " + player.getHomeGroundName(),
         });
     }
 

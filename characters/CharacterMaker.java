@@ -1,26 +1,30 @@
 package characters;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.function.Function;
-
 import characters.subcategories.archers.*;
+import characters.subcategories.knights.*;
+import characters.subcategories.mages.*;
+import characters.subcategories.healers.*;
+import characters.subcategories.mythicalcreatures.*;
 
 public final class CharacterMaker {    // Factory design pattern
 
     private CharacterMaker() {}  // Cannot be Instantiated
 
-    private static final Map<Character, Function<Integer, Character>> characterCreators = new HashMap<>();
-
-    static {
-        characterCreators.put(Archer.class.getSimpleName(), CharacterMaker::newArcher);
-    }
-
     public static Character newCharacter(String category, int tier) {
-        if (!characterCreators.containsKey(category)) {
-            throw new IllegalArgumentException("Unknown Character Type");
+        switch (category) {
+            case "Archer" :
+                return newArcher(tier);
+            case "Knight" :
+                return newKnight(tier);
+            case "Mage" :
+                return newMage(tier);
+            case "Healer" :
+                return newHealer(tier);
+            case "Mythical Creature" :
+                return newMythicalCreature(tier);
+            default:
+                throw new IllegalArgumentException("Invalid Category");
         }
-        return characterCreators.get(category).apply(tier);
     }
 
     private static Archer newArcher(int tier) {
@@ -36,96 +40,74 @@ public final class CharacterMaker {    // Factory design pattern
             case 5:
                 return new Archer5();
             default:
-                throw new IllegalArgumentException("Unknown Name");
+                throw new IllegalArgumentException("Invalid Tier");
         }
     }
-/*
-    public static Knight newKnight(String name) {
-        switch (name) {
-            case Knight1.getName():
+    private static Knight newKnight(int tier) {
+        switch (tier) {
+            case 1:
                 return new Knight1();
-                break;
-            case Knight2.getName():
+            case 2:
                 return new Knight2();
-                break;
-            case Knight3.getName():
+            case 3:
                 return new Knight3();
-                break;
-            case Knight4.getName():
+            case 4:
                 return new Knight4();
-                break;
-            case Knight5.getName():
+            case 5:
                 return new Knight5();
-                break;
             default:
-                throw new IllegalArgumentException("Unknown Name");
+                throw new IllegalArgumentException("Invalid Tier");
         }
     }
 
-    public static Mage newMage(String name) {
-        switch (name) {
-            case Mage1.getName():
+    public static Mage newMage(int tier) {
+        switch (tier) {
+            case 1:
                 return new Mage1();
-                break;
-            case Mage2.getName():
+            case 2:
                 return new Mage2();
-                break;
-            case Mage3.getName():
+            case 3:
                 return new Mage3();
-                break;
-            case Mage4.getName():
+            case 4:
                 return new Mage4();
-                break;
-            case Mage5.getName():
+            case 5:
                 return new Mage5();
-                break;
             default:
-                throw new IllegalArgumentException("Unknown Name");
+                throw new IllegalArgumentException("Invalid Tier");
         }
     }
-
-    public static Healer newHealer(String name) {
-        switch (name) {
-            case Healer1.getName():
+    
+    public static Healer newHealer(int tier) {
+        switch (tier) {
+            case 1:
                 return new Healer1();
-                break;
-            case Healer2.getName():
+            case 2:
                 return new Healer2();
-                break;
-            case Healer3.getName():
+            case 3:
                 return new Healer3();
-                break;
-            case Healer4.getName():
+            case 4:
                 return new Healer4();
-                break;
-            case Healer5.getName():
+            case 5:
                 return new Healer5();
-                break;
             default:
-                throw new IllegalArgumentException("Unknown Name");
+                throw new IllegalArgumentException("Invalid Tier");
         }
     }
-
-    public static Mythical newMythical(String name) {
-        switch (name) {
-            case Mythical1.getName():
-                return new Mythical1();
-                break;
-            case Mythical2.getName():
-                return new Mythical2();
-                break;
-            case Mythical3.getName():
-                return new Mythical3();
-                break;
-            case Mythical4.getName():
-                return new Mythical4();
-                break;
-            case Mythical5.getName():
-                return new Mythical5();
-                break;
+    
+    public static MythicalCreature newMythicalCreature(int tier) {
+        switch (tier) {
+            case 1:
+                return new MythicalCreature1();
+            case 2:
+                return new MythicalCreature2();
+            case 3:
+                return new MythicalCreature3();
+            case 4:
+                return new MythicalCreature4();
+            case 5:
+                return new MythicalCreature5();
             default:
-                throw new IllegalArgumentException("Unknown Name");
+                throw new IllegalArgumentException("Invalid Tier");
         }
     }
-*/
 }
